@@ -24,7 +24,7 @@ def create_customer(customer):
     new_id = max_id + 1
     customer["id"] = new_id
     CUSTOMERS.append(customer)
-    
+
     return customer
 
 def delete_customer(id):
@@ -34,3 +34,9 @@ def delete_customer(id):
             customer_index = index
     if customer_index >= 0:
         CUSTOMERS.pop(customer_index)
+
+def update_customer(id, new_customer):
+    for index, customer in enumerate(CUSTOMERS):
+        if customer["id"] == id:
+            CUSTOMERS[index] = new_customer
+            break
