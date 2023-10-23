@@ -87,7 +87,7 @@ class HandleRequests(BaseHTTPRequestHandler):
                 response = get_single_customer(id)
             else:
                 response = get_all_customers()
-        
+
         if resource == "employees":
             if id is not None:
                 response = get_single_employee(id)
@@ -107,7 +107,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         post_body = json.loads(post_body)
 
         # Parse the URL
-        (resource, id) = self.parse_url(self.path)
+        (resource, _) = self.parse_url(self.path)
 
         # Initialize new animal
         new_animal = None
