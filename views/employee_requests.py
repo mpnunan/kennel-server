@@ -14,7 +14,9 @@ def get_all_employees():
         db_cursor.execute("""
         SELECT
             a.id,
-            a.name
+            a.name,
+            a.address,
+            a.location_id
         FROM employee a
         """)
 
@@ -48,7 +50,9 @@ def get_single_employee(id):
         db_cursor.execute("""
         SELECT
             a.id,
-            a.name
+            a.name,
+            a.address,
+            a.location_id
         FROM employee a
         WHERE a.id = ?
         """, ( id, ))
@@ -96,12 +100,13 @@ def create_employee(employee):
     return employee
 
 def delete_employee(id):
-    employee_index = -1
-    for index, employee in enumerate(EMPLOYEES):
-        if employee["id"] == id:
-            employee_index = index
-    if employee_index >= 0:
-        EMPLOYEES.pop(employee_index)
+    with sqlite3.connect("./kennel.sqlite3") as conn:
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        DELETE FROM employee
+        WHERE id = ?
+        """, (id, ))
 
 def update_employee(id, new_employee):
     for index, employee in enumerate(EMPLOYEES):
