@@ -89,23 +89,26 @@ def get_customer_by_email(email):
     return customers
 
 def create_customer(customer):
-    max_id = CUSTOMERS[-1]["id"]
-    new_id = max_id + 1
-    customer["id"] = new_id
-    CUSTOMERS.append(customer)
+    # max_id = CUSTOMERS[-1]["id"]
+    # new_id = max_id + 1
+    # customer["id"] = new_id
+    # CUSTOMERS.append(customer)
 
-    return customer
+    # return customer
+    pass
 
 def delete_customer(id):
-    customer_index = -1
-    for index, customer in enumerate(CUSTOMERS):
-        if customer["id"] == id:
-            customer_index = index
-    if customer_index >= 0:
-        CUSTOMERS.pop(customer_index)
+    # customer_index = -1
+    # for index, customer in enumerate(CUSTOMERS):
+    #     if customer["id"] == id:
+    #         customer_index = index
+    # if customer_index >= 0:
+    #     CUSTOMERS.pop(customer_index)
+    pass
 
 def update_customer(id, new_customer):
-    for index, customer in enumerate(CUSTOMERS):
-        if customer["id"] == id:
-            CUSTOMERS[index] = new_customer
-            break
+    # for index, customer in enumerate(CUSTOMERS):
+    #     if customer["id"] == id:
+    #         CUSTOMERS[index] = new_customer
+    #         break
+    pass

@@ -1,6 +1,6 @@
 import sqlite3
 import json
-from models import Employee
+from models import Employee, Location
 
 def get_all_employees():
     # Open a connection to the database
@@ -16,8 +16,12 @@ def get_all_employees():
             a.id,
             a.name,
             a.address,
-            a.location_id
-        FROM employee a
+            a.location_id,
+            l.name location_name,
+            l.address location_address
+        FROM Employee a
+        JOIN Location l
+            ON l.id = a.location_id
         """)
 
         # Initialize an empty list to hold all animal representations
@@ -34,6 +38,9 @@ def get_all_employees():
             # exact order of the parameters defined in the
             # Animal class above.
             employee = Employee(row['id'], row['name'], row['address'], row['location_id'])
+            location = Location(row['id'], row ['name'], row['address'])
+            
+            employee.location = location.__dict__
 
             employees.append(employee.__dict__) # see the notes below for an explanation on this line of code.
 
@@ -92,12 +99,13 @@ def get_employees_by_location(location_id):
     return enmployees
 
 def create_employee(employee):
-    max_id = EMPLOYEES[-1]["id"]
-    new_id = max_id + 1
-    employee["id"] = new_id
-    EMPLOYEES.append(employee)
+    # max_id = EMPLOYEES[-1]["id"]
+    # new_id = max_id + 1
+    # employee["id"] = new_id
+    # EMPLOYEES.append(employee)
+    pass
 
-    return employee
+    # return employee
 
 def delete_employee(id):
     with sqlite3.connect("./kennel.sqlite3") as conn:
@@ -109,7 +117,8 @@ def delete_employee(id):
         """, (id, ))
 
 def update_employee(id, new_employee):
-    for index, employee in enumerate(EMPLOYEES):
-        if employee["id"] == id:
-            EMPLOYEES[index] = new_employee
-            break
+    # for index, employee in enumerate(EMPLOYEES):
+    #     if employee["id"] == id:
+    #         EMPLOYEES[index] = new_employee
+    #         break
+    pass
