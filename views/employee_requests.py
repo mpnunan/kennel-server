@@ -39,7 +39,7 @@ def get_all_employees():
             # Animal class above.
             employee = Employee(row['id'], row['name'], row['address'], row['location_id'])
             location = Location(row['id'], row ['name'], row['address'])
-            
+
             employee.location = location.__dict__
 
             employees.append(employee.__dict__) # see the notes below for an explanation on this line of code.
