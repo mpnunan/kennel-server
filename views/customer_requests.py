@@ -14,7 +14,8 @@ def get_all_customers():
         db_cursor.execute("""
         SELECT
             a.id,
-            a.name
+            a.name,
+            a.address
         FROM customer a
         """)
 
@@ -48,7 +49,8 @@ def get_single_customer(id):
         db_cursor.execute("""
         SELECT
             a.id,
-            a.name
+            a.name,
+            a.address
         FROM customer a
         WHERE a.id = ?
         """, ( id, ))
