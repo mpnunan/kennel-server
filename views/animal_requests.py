@@ -156,8 +156,8 @@ def create_animal(new_animal):
         VALUES
             ( ?, ?, ?, ?, ?);
         """, (new_animal['name'], new_animal['breed'],
-              new_animal['status'], new_animal['location_id'],
-              new_animal['customer_id'], ))
+              new_animal['status'], new_animal['locationId'],
+              new_animal['customerId'], ))
 
         # The `lastrowid` property on the cursor will return
         # the primary key of the last thing that got added to
@@ -195,8 +195,8 @@ def update_animal(id, new_animal):
                 customer_id = ?
         WHERE id = ?
         """, (new_animal['name'], new_animal['breed'],
-              new_animal['status'], new_animal['location_id'],
-              new_animal['customer_id'], id, ))
+              new_animal['status'], new_animal['locationId'],
+              new_animal['customerId'], id, ))
 
         # Were any rows affected?
         # Did the client send an `id` that exists?
